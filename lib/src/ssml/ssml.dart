@@ -13,8 +13,7 @@ class Ssml {
   final String? rolePlay;
 
   String get buildSsml {
-
-    return "<speak version='1.0' "
+    String ssml = "<speak version='1.0' "
         "xmlns='http://www.w3.org/2001/10/synthesis' "
         "xml:lang='${voice.locale}'>"
         "<voice xml:lang='${voice.locale}' "
@@ -24,5 +23,7 @@ class Ssml {
         "<prosody volume='$volume' pitch='$pitch' rate='$speed'>"
         "$text"
         "</prosody></mstts:express-as></voice></speak>";
+    print('tts final text is $ssml');
+    return ssml;
   }
 }
