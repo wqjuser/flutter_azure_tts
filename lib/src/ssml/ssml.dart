@@ -1,21 +1,28 @@
 import 'package:flutter_azure_tts/src/voices/voice_model.dart';
 
 class Ssml {
-  Ssml({required this.voice, required this.text, required this.speed});
+  Ssml({required this.voice, required this.text, required this.speed, this.pitch, this.volume, this.emo, this.emoSrc, this.rolePlay});
 
   final Voice voice;
   final String text;
   final double speed;
+  final String? pitch;
+  final double? volume;
+  final String? emo;
+  final double? emoSrc;
+  final String? rolePlay;
 
   String get buildSsml {
+
     return "<speak version='1.0' "
         "xmlns='http://www.w3.org/2001/10/synthesis' "
         "xml:lang='${voice.locale}'>"
         "<voice xml:lang='${voice.locale}' "
         "xml:gender='${voice.gender}' "
         "name='${voice.shortName}'>"
-        "<prosody rate='$speed'>"
+        "<mstts:express-as role='$rolePlay' style='$emo' styledegree='$emoSrc'>"
+        "<prosody volume='$volume' pitch='$pitch' rate='$speed'>"
         "$text"
-        "<\/prosody><\/voice><\/speak>";
+        "</prosody></mstts:express-as></voice></speak>";
   }
 }

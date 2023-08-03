@@ -6,15 +6,6 @@ class TtsParams extends AudioRequestParams {
   ///
   /// * `rate` default to 1.
 
-  TtsParams({
-    required Voice voice,
-    required String audioFormat,
-    required text,
-    double? rate,
-  }) : super(
-          audioFormat: audioFormat,
-          text: text,
-          voice: voice,
-          rate: rate,
-        );
+  TtsParams({required Voice voice, required String audioFormat, required text, double? rate, String? pitch, double? volume, String? emo, double? emoSrc, String? rolePlay})
+      : super(audioFormat: audioFormat, text: text, voice: voice, rate: rate, pitch: pitch, volume: volume, emo: emo, emoSrc: emoSrc, rolePlay: rolePlay);
 }
